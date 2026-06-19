@@ -1,0 +1,6 @@
+{
+  "name": "Kaggle 5-Day AI Agents Tracker",
+  "description": "A modern and engaging progress tracker for the Kaggle 5-Day AI Agents intensive vibe coding course, featuring LocalStorage state persistence and motivational milestone highlights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
