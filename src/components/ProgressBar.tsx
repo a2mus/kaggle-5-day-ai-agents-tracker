@@ -24,29 +24,29 @@ export default function ProgressBar({
 
   // Compute status rank description
   let rank = "Ready to Vibe";
-  let colorClass = "from-neutral-400 to-neutral-500 text-neutral-800";
-  let bgGradient = "from-neutral-100 to-neutral-200 border-neutral-300";
+  let badgeColor = "text-neutral-400 border-white/10 bg-white/5";
+  let iconColor = "text-neutral-400";
 
   if (percentage >= 100) {
     rank = "Sovereign AI Master 👑";
-    colorClass = "from-yellow-500 to-amber-600 text-white";
-    bgGradient = "from-amber-50 to-orange-100 border-amber-300";
+    badgeColor = "border-amber-500/30 bg-amber-500/10 shadow-[0_0_15px_rgba(245,158,11,0.15)]";
+    iconColor = "text-amber-400";
   } else if (percentage >= 80) {
     rank = "Senior Agent Architect 🧠";
-    colorClass = "from-indigo-500 to-indigo-700 text-white";
-    bgGradient = "from-indigo-50 to-indigo-100 border-indigo-200";
+    badgeColor = "border-indigo-500/30 bg-indigo-500/10 shadow-[0_0_15px_rgba(99,102,241,0.15)]";
+    iconColor = "text-indigo-400";
   } else if (percentage >= 50) {
     rank = "Autonomous Builder 🤖";
-    colorClass = "from-teal-500 to-teal-600 text-white";
-    bgGradient = "from-teal-50 to-emerald-100 border-teal-200";
+    badgeColor = "border-teal-500/30 bg-teal-500/10 shadow-[0_0_15px_rgba(20,184,166,0.15)]";
+    iconColor = "text-teal-400";
   } else if (percentage >= 20) {
     rank = "Vibe Code Craftsman 🛠️";
-    colorClass = "from-blue-500 to-blue-600 text-white";
-    bgGradient = "from-blue-50 to-blue-100 border-blue-200";
+    badgeColor = "border-blue-500/30 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.15)]";
+    iconColor = "text-blue-400";
   } else if (percentage >= 1) {
     rank = "Sandbox Sandboxer 🚀";
-    colorClass = "from-orange-400 to-orange-500 text-neutral-900";
-    bgGradient = "from-orange-50/50 to-orange-100/50 border-orange-200";
+    badgeColor = "border-orange-500/30 bg-orange-500/10 shadow-[0_0_15px_rgba(249,115,22,0.15)]";
+    iconColor = "text-orange-400";
   }
 
   return (
@@ -67,7 +67,7 @@ export default function ProgressBar({
               Kaggle Course Tracker
             </span>
           </div>
-          <h2 className="text-3xl font-display font-bold tracking-tight text-white drop-shadow-md">
+          <h2 className="text-3xl font-display font-bold tracking-tight text-white drop-shadow-sm">
             5-Day AI Agents Course
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl">
@@ -77,12 +77,12 @@ export default function ProgressBar({
         </div>
 
         {/* Level & Rank Badge */}
-        <div className={`p-4 rounded-xl border bg-gradient-to-br ${bgGradient} flex items-center gap-3 self-start md:self-auto shadow-inner`}>
-          <div className="grid place-items-center w-10 h-10 bg-black/30 border border-white/10 rounded-lg shadow-sm">
-            <Trophy className={`w-5 h-5 ${colorClass}`} />
+        <div className={`p-4 rounded-xl border ${badgeColor} flex items-center gap-3 self-start md:self-auto shadow-inner transition-all duration-300`}>
+          <div className="grid place-items-center w-10 h-10 bg-black/40 border border-white/5 rounded-lg shadow-sm">
+            <Trophy className={`w-5 h-5 ${iconColor}`} />
           </div>
           <div>
-            <div className="text-2xs font-mono font-semibold text-white/50 uppercase tracking-widest">
+            <div className="text-2xs font-mono font-semibold text-neutral-400 uppercase tracking-widest">
               My Rank
             </div>
             <div className="font-display font-semibold text-sm text-white drop-shadow-sm">
