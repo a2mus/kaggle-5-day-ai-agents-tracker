@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/kaggle-5-day-ai-agents-tracker/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
