@@ -52,40 +52,40 @@ export default function ProgressBar({
   return (
     <div
       id="progress-dashboard-panel"
-      className="bg-white border border-neutral-200 rounded-2xl p-6 shadow-sm overflow-hidden relative"
+      className="glass-panel rounded-2xl p-6 overflow-hidden relative"
     >
       {/* Absolute background accent */}
-      <div className="absolute top-0 right-0 w-48 h-48 bg-radial from-orange-100/30 to-transparent rounded-full -mr-16 -mt-16 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-48 h-48 bg-radial from-indigo-500/10 to-transparent rounded-full -mr-16 -mt-16 pointer-events-none" />
 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="p-1.5 bg-neutral-100 rounded-lg text-neutral-700">
-              <GraduationCap className="w-5 h-5 text-neutral-600" />
+            <span className="p-1.5 bg-white/5 border border-white/10 rounded-lg text-neutral-400">
+              <GraduationCap className="w-5 h-5 text-indigo-400" />
             </span>
             <span className="text-xs uppercase font-mono tracking-wider text-neutral-400 font-semibold">
               Kaggle Course Tracker
             </span>
           </div>
-          <h2 className="text-3xl font-display font-bold tracking-tight text-neutral-900">
+          <h2 className="text-3xl font-display font-bold tracking-tight text-white drop-shadow-md">
             5-Day AI Agents Course
           </h2>
-          <p className="text-sm text-neutral-500 max-w-xl">
+          <p className="text-sm text-neutral-400 max-w-xl">
             Track your developer journey from setting up Google AI Studio to submitting
             your final capstone agent to Kaggle by July 6, 2026.
           </p>
         </div>
 
         {/* Level & Rank Badge */}
-        <div className={`p-4 rounded-xl border ${bgGradient} flex items-center gap-3 self-start md:self-auto`}>
-          <div className="grid place-items-center w-10 h-10 bg-white rounded-lg shadow-sm">
-            <Trophy className="w-5 h-5 text-amber-500" />
+        <div className={`p-4 rounded-xl border bg-gradient-to-br ${bgGradient} flex items-center gap-3 self-start md:self-auto shadow-inner`}>
+          <div className="grid place-items-center w-10 h-10 bg-black/30 border border-white/10 rounded-lg shadow-sm">
+            <Trophy className={`w-5 h-5 ${colorClass}`} />
           </div>
           <div>
-            <div className="text-2xs font-mono font-semibold text-neutral-400 uppercase tracking-widest">
+            <div className="text-2xs font-mono font-semibold text-white/50 uppercase tracking-widest">
               My Rank
             </div>
-            <div className="font-display font-semibold text-sm text-neutral-800">
+            <div className="font-display font-semibold text-sm text-white drop-shadow-sm">
               {rank}
             </div>
           </div>
@@ -96,35 +96,37 @@ export default function ProgressBar({
       <div className="mt-8 space-y-3 relative z-10">
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-2 font-mono">
-            <span className="font-bold text-neutral-900">{checkedCount}</span>
-            <span className="text-neutral-400">/</span>
-            <span className="text-neutral-500">{totalCount} tasks completed</span>
+            <span className="font-bold text-white drop-shadow-sm">{checkedCount}</span>
+            <span className="text-neutral-500">/</span>
+            <span className="text-neutral-400">{totalCount} tasks completed</span>
           </div>
-          <div className="font-mono font-bold text-neutral-900 bg-neutral-100 px-2.5 py-0.5 rounded-full text-xs">
+          <div className="font-mono font-bold text-white bg-white/10 border border-white/5 px-2.5 py-0.5 rounded-full text-xs shadow-inner">
             {percentage}% Complete
           </div>
         </div>
 
         {/* Track */}
-        <div className="w-full bg-neutral-100 rounded-full h-3 overflow-hidden border border-neutral-250/30">
+        <div className="w-full bg-black/40 rounded-full h-3 overflow-hidden border border-white/5 shadow-inner">
           <motion.div
             id="master-progress-track"
-            className="h-full bg-gradient-to-r from-teal-500 via-indigo-500 to-orange-500 rounded-full"
+            className="h-full bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500 rounded-full relative"
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-white/30 rounded-full" />
+          </motion.div>
         </div>
       </div>
 
       {/* Interactive Current Day Setter */}
-      <div className="mt-6 pt-5 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+      <div className="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
         <div className="space-y-0.5">
-          <div className="text-xs font-semibold text-neutral-600 flex items-center gap-1.5">
-            <Zap className="w-3.5 h-3.5 text-orange-500 fill-orange-500" />
+          <div className="text-xs font-semibold text-neutral-300 flex items-center gap-1.5 drop-shadow-sm">
+            <Zap className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400/50" />
             Set Your Active Milestone Day
           </div>
-          <p className="text-2xs text-neutral-400">
+          <p className="text-2xs text-neutral-500">
             Click to focus your task workflow and highlight your current stream section.
           </p>
         </div>
@@ -135,10 +137,10 @@ export default function ProgressBar({
               key={d}
               id={`set-day-btn-${d}`}
               onClick={() => setCurrentDay(d)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-300 ${
                 currentDay === d
-                  ? "bg-neutral-900 border border-neutral-950 text-white shadow-sm ring-2 ring-neutral-400/25 scale-105"
-                  : "bg-white border border-neutral-250 text-neutral-600 hover:border-neutral-400 hover:bg-neutral-50"
+                  ? "bg-gradient-to-br from-indigo-500/80 to-purple-600/80 border border-white/20 text-white shadow-[0_0_15px_rgba(99,102,241,0.5)] scale-105"
+                  : "bg-black/30 border border-white/10 text-neutral-400 hover:border-white/20 hover:text-white hover:bg-white/5"
               }`}
             >
               Day {d}

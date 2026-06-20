@@ -22,27 +22,28 @@ export default function GlobalSetupCard({ state, onToggle }: GlobalSetupCardProp
   return (
     <div
       id="global-setup-card-panel"
-      className={`border rounded-2xl p-6 transition-all duration-300 bg-white shadow-sm flex flex-col justify-between ${
+      className={`glass-card rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden ${
         isAllDone
-          ? "border-neutral-300 ring-2 ring-neutral-100"
-          : "border-neutral-200"
+          ? "border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.2)]"
+          : "border-white/10"
       }`}
     >
-      <div>
+      {isAllDone && <div className="absolute inset-0 bg-emerald-500/5 pointer-events-none" />}
+      <div className="relative z-10">
         {/* Header section of the card */}
-        <div className="flex items-center justify-between gap-4 pb-4 border-b border-neutral-100">
+        <div className="flex items-center justify-between gap-4 pb-4 border-b border-white/10">
           <div className="flex items-center gap-3">
             <span
-              className={`p-2 rounded-xl border flex items-center justify-center ${
+              className={`p-2 rounded-xl border flex items-center justify-center transition-all ${
                 isAllDone
-                  ? "bg-neutral-900 text-white border-neutral-950"
-                  : "bg-neutral-50 text-neutral-600 border-neutral-200"
+                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                  : "bg-white/5 text-neutral-400 border-white/10"
               }`}
             >
               <Hammer className="w-5 h-5" />
             </span>
             <div>
-              <h3 className="font-display font-semibold text-lg text-neutral-800">
+              <h3 className="font-display font-semibold text-lg text-white drop-shadow-sm">
                 Global Setup
               </h3>
               <p className="text-2xs font-mono font-medium text-neutral-400">
@@ -52,7 +53,7 @@ export default function GlobalSetupCard({ state, onToggle }: GlobalSetupCardProp
           </div>
 
           <div className="flex flex-col items-end shrink-0">
-            <span className="font-mono text-xs font-bold text-neutral-800 bg-neutral-100 px-2 py-0.5 rounded-full">
+            <span className="font-mono text-xs font-bold text-neutral-300 bg-black/40 border border-white/5 shadow-inner px-2 py-0.5 rounded-full">
               {completedCount}/{tasks.length}
             </span>
           </div>
@@ -68,10 +69,10 @@ export default function GlobalSetupCard({ state, onToggle }: GlobalSetupCardProp
                 key={task.id}
                 id={`task-item-setup-${task.id}`}
                 onClick={() => onToggle(task.field as keyof GlobalSetupState)}
-                className={`group flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all ${
+                className={`group flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all duration-300 ${
                   isChecked
-                    ? "bg-neutral-50 border-neutral-200/50"
-                    : "bg-white border-neutral-150 hover:bg-neutral-50/55 hover:border-neutral-250"
+                    ? "bg-white/5 border-white/5"
+                    : "bg-black/20 border-white/10 hover:bg-white/10 hover:border-white/20"
                 }`}
               >
                 {/* Custom animated checkbox */}
@@ -84,10 +85,10 @@ export default function GlobalSetupCard({ state, onToggle }: GlobalSetupCardProp
                     id={`checkbox-input-setup-${task.id}`}
                   />
                   <div
-                    className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
+                    className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300 ${
                       isChecked
-                        ? "bg-neutral-950 border-neutral-950"
-                        : "bg-white border-neutral-300 group-hover:border-neutral-400"
+                        ? "bg-emerald-500 border-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                        : "bg-black/50 border-white/20 group-hover:border-emerald-400"
                     }`}
                   >
                     {isChecked && (
@@ -110,18 +111,18 @@ export default function GlobalSetupCard({ state, onToggle }: GlobalSetupCardProp
                 {/* Texts */}
                 <div className="flex-1 min-w-0">
                   <div
-                    className={`text-sm font-sans font-medium transition-all duration-200 ${
+                    className={`text-sm font-sans font-medium transition-all duration-300 ${
                       isChecked
-                        ? "text-neutral-400 line-through decoration-neutral-350"
-                        : "text-neutral-800"
+                        ? "text-neutral-500 line-through decoration-neutral-600"
+                        : "text-neutral-200 group-hover:text-white"
                     }`}
                   >
                     {task.text}
                   </div>
                   {task.subtext && (
                     <div
-                      className={`text-2xs font-sans mt-0.5 leading-relaxed leading-snug transition-all duration-200 ${
-                        isChecked ? "text-neutral-350" : "text-neutral-400"
+                      className={`text-2xs font-sans mt-0.5 leading-relaxed transition-all duration-300 ${
+                        isChecked ? "text-neutral-600" : "text-neutral-400"
                       }`}
                     >
                       {task.subtext}
@@ -135,7 +136,7 @@ export default function GlobalSetupCard({ state, onToggle }: GlobalSetupCardProp
                           href={link.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-2 py-0.5 bg-neutral-100/80 hover:bg-neutral-250/70 border border-neutral-200 rounded-md font-mono text-[9px] font-semibold text-neutral-600 hover:text-neutral-900 inline-flex items-center gap-1 transition-all"
+                          className="px-2 py-0.5 bg-black/40 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/30 rounded-md font-mono text-[9px] font-semibold text-neutral-300 hover:text-white inline-flex items-center gap-1 transition-all shadow-inner"
                         >
                           {link.label}
                           <ExternalLink className="w-2.5 h-2.5 text-neutral-400" />
@@ -151,7 +152,7 @@ export default function GlobalSetupCard({ state, onToggle }: GlobalSetupCardProp
       </div>
 
       {isAllDone && (
-        <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center gap-1.5 text-2xs font-mono text-emerald-600 font-semibold justify-center">
+        <div className="mt-5 pt-4 border-t border-white/5 flex items-center gap-1.5 text-2xs font-mono text-emerald-400 font-semibold justify-center relative z-10 drop-shadow-sm">
           <CloudLightning className="w-3.5 h-3.5 animate-pulse" />
           SETUP RUNTIME COMPLIANT
         </div>

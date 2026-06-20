@@ -28,36 +28,36 @@ export default function CelebrationToastList({ toasts, removeToast }: Celebratio
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.85, transition: { duration: 0.2 } }}
-            className={`pointer-events-auto p-4 rounded-xl border flex items-start gap-3 shadow-lg backdrop-blur-md ${
+            className={`pointer-events-auto p-4 rounded-xl flex items-start gap-3 shadow-2xl backdrop-blur-xl transition-all ${
               toast.type === "milestone"
-                ? "bg-neutral-900 border-neutral-950 text-white"
-                : "bg-white/95 border-neutral-200 text-neutral-800"
+                ? "bg-gradient-to-r from-indigo-600/90 to-purple-600/90 border border-white/20 text-white shadow-[0_10px_40px_rgba(99,102,241,0.4)]"
+                : "bg-black/60 border border-white/10 text-white"
             }`}
           >
             <div className="mt-0.5 shrink-0">
               {toast.type === "milestone" ? (
-                <div className="p-1 bg-amber-500 rounded-lg text-neutral-900">
-                  <Sparkles className="w-4 h-4" />
+                <div className="p-1 bg-white/20 rounded-lg text-white shadow-inner">
+                  <Sparkles className="w-4 h-4 animate-pulse" />
                 </div>
               ) : (
-                <div className="p-1 bg-teal-50 rounded-lg text-teal-600 border border-teal-100">
+                <div className="p-1 bg-emerald-500/20 rounded-lg text-emerald-400 border border-emerald-500/30">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
               )}
             </div>
 
             <div className="flex-1 min-w-0">
-              <span className="text-sm font-sans font-medium block leading-relaxed leading-snug">
+              <span className="text-sm font-sans font-medium block leading-relaxed drop-shadow-sm">
                 {toast.text}
               </span>
-              <span className="text-[10px] font-mono block mt-1 uppercase tracking-wider text-neutral-400">
+              <span className={`text-[10px] font-mono block mt-1 uppercase tracking-wider ${toast.type === "milestone" ? "text-indigo-200" : "text-neutral-400"}`}>
                 {toast.type === "milestone" ? "Milestone Unlocked! 🎉" : "Vibe Synced ✓"}
               </span>
             </div>
 
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-neutral-400 hover:text-neutral-600 transition-colors p-1 rounded-md shrink-0 focus:outline-none"
+              className="text-neutral-400 hover:text-white hover:bg-white/10 transition-colors p-1 rounded-md shrink-0 focus:outline-none"
               aria-label="Dismiss Notification"
             >
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

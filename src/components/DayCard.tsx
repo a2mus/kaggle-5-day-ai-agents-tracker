@@ -49,41 +49,46 @@ export default function DayCard({
       onClick={() => {
         if (!isActive) onSelectActiveDay(num);
       }}
-      className={`border rounded-2xl p-6 transition-all duration-300 relative flex flex-col justify-between cursor-pointer ${
+      className={`glass-card rounded-2xl p-6 relative flex flex-col justify-between cursor-pointer overflow-hidden ${
         isActive
-          ? "bg-white border-neutral-900 shadow-md ring-2 ring-neutral-900/10 scale-[1.01]"
+          ? "bg-white/10 border-indigo-500/50 shadow-[0_0_30px_rgba(99,102,241,0.2)] scale-[1.01]"
           : isDayCompleted
-          ? "bg-neutral-50/70 border-neutral-350 opacity-90 shadow-2xs hover:border-neutral-400 hover:opacity-100"
-          : "bg-white border-neutral-200 shadow-sm hover:border-neutral-300 hover:shadow-xs"
+          ? "bg-black/20 border-white/5 opacity-80 shadow-inner hover:border-white/20 hover:opacity-100"
+          : "bg-black/40 border-white/10 hover:bg-black/30"
       }`}
     >
+      {/* Background glowing accent for active state */}
+      {isActive && (
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 pointer-events-none" />
+      )}
+
       {/* Top Tag & Indicator */}
       {isActive && (
-        <span className="absolute -top-2.5 -right-2.5 bg-neutral-900 border border-neutral-950 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
-          <Zap className="w-2.5 h-2.5 text-orange-400 fill-orange-400" />
+        <span className="absolute -top-2.5 -right-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 border border-indigo-400 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-md shadow-md flex items-center gap-1 z-10">
+          <Zap className="w-2.5 h-2.5 text-white fill-white" />
           ACTIVE STREAM
         </span>
       )}
 
-      <div>
+      <div className="relative z-10">
         {/* Header content */}
-        <div className="flex items-center justify-between gap-4 pb-4 border-b border-neutral-100">
+        <div className="flex items-center justify-between gap-4 pb-4 border-b border-white/10">
           <div className="flex items-center gap-3">
             <span
-              className={`p-2 rounded-xl border flex items-center justify-center ${
+              className={`p-2 rounded-xl border flex items-center justify-center transition-all ${
                 isActive
-                  ? "bg-neutral-900 text-white border-neutral-950"
+                  ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/30"
                   : isDayCompleted
-                  ? "bg-emerald-50 text-emerald-600 border-emerald-200"
-                  : "bg-neutral-50 text-neutral-600 border-neutral-205"
+                  ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                  : "bg-white/5 text-neutral-400 border-white/10"
               }`}
             >
               <Calendar className="w-5 h-5" />
             </span>
             <div>
-              <h3 className="font-display font-semibold text-lg text-neutral-800 flex items-center gap-1.5">
+              <h3 className="font-display font-semibold text-lg text-white flex items-center gap-1.5 drop-shadow-sm">
                 {title}
-                {isDayCompleted && <CheckCircle2 className="w-4 h-4 text-emerald-500 fill-emerald-500 inline-block" />}
+                {isDayCompleted && <CheckCircle2 className="w-4 h-4 text-emerald-400 fill-emerald-400/20 inline-block" />}
               </h3>
               <p className="text-2xs font-sans font-medium text-neutral-400 uppercase tracking-widest">
                 {subtitle}
@@ -92,7 +97,7 @@ export default function DayCard({
           </div>
 
           <div className="flex flex-col items-end shrink-0 select-none">
-            <span className="font-mono text-xs font-bold text-neutral-800 bg-neutral-100 px-2 py-0.5 rounded-full">
+            <span className="font-mono text-xs font-bold text-neutral-300 bg-black/40 border border-white/5 shadow-inner px-2 py-0.5 rounded-full">
               {completedCount}/{tasks.length}
             </span>
           </div>
@@ -114,10 +119,10 @@ export default function DayCard({
                   e.stopPropagation(); // prevent card-activation selection click
                   onToggle(num, task.field, task.subfieldKey);
                 }}
-                className={`group flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all ${
+                className={`group flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all duration-300 ${
                   isChecked
-                    ? "bg-neutral-50 border-neutral-200/50"
-                    : "bg-white border-neutral-150 hover:bg-neutral-50/55 hover:border-neutral-250"
+                    ? "bg-white/5 border-white/5"
+                    : "bg-black/20 border-white/10 hover:bg-white/10 hover:border-white/20"
                 }`}
               >
                 {/* Checkbox item */}
@@ -130,10 +135,10 @@ export default function DayCard({
                     id={`checkbox-input-${task.id}`}
                   />
                   <div
-                    className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
+                    className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300 ${
                       isChecked
-                        ? "bg-neutral-950 border-neutral-950"
-                        : "bg-white border-neutral-300 group-hover:border-neutral-400"
+                        ? "bg-indigo-500 border-indigo-400 shadow-[0_0_10px_rgba(99,102,241,0.5)]"
+                        : "bg-black/50 border-white/20 group-hover:border-indigo-400"
                     }`}
                   >
                     {isChecked && (
@@ -156,18 +161,18 @@ export default function DayCard({
                 {/* Text descriptors */}
                 <div className="flex-1 min-w-0">
                   <div
-                    className={`text-sm font-sans font-medium transition-all duration-200 ${
+                    className={`text-sm font-sans font-medium transition-all duration-300 ${
                       isChecked
-                        ? "text-neutral-400 line-through decoration-neutral-350"
-                        : "text-neutral-800"
+                        ? "text-neutral-500 line-through decoration-neutral-600"
+                        : "text-neutral-200 group-hover:text-white"
                     }`}
                   >
                     {task.text}
                   </div>
                   {task.subtext && (
                     <div
-                      className={`text-2xs font-sans mt-0.5 leading-relaxed leading-snug transition-all duration-200 ${
-                        isChecked ? "text-neutral-350" : "text-neutral-400"
+                      className={`text-2xs font-sans mt-0.5 leading-relaxed transition-all duration-300 ${
+                        isChecked ? "text-neutral-600" : "text-neutral-400"
                       }`}
                     >
                       {task.subtext}
@@ -181,7 +186,7 @@ export default function DayCard({
                           href={link.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-2 py-0.5 bg-neutral-100/80 hover:bg-neutral-250/70 border border-neutral-200 rounded-md font-mono text-[9px] font-semibold text-neutral-600 hover:text-neutral-900 inline-flex items-center gap-1 transition-all"
+                          className="px-2 py-0.5 bg-black/40 hover:bg-indigo-500/20 border border-white/10 hover:border-indigo-500/30 rounded-md font-mono text-[9px] font-semibold text-neutral-300 hover:text-white inline-flex items-center gap-1 transition-all shadow-inner"
                         >
                           {link.label}
                           <ExternalLink className="w-2.5 h-2.5 text-neutral-400" />
@@ -197,8 +202,8 @@ export default function DayCard({
       </div>
 
       {isDayCompleted && (
-        <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center gap-1 text-[10px] font-mono text-emerald-600 font-semibold justify-center">
-          <Star className="w-3.5 h-3.5 fill-emerald-500 text-emerald-500" />
+        <div className="mt-5 pt-4 border-t border-white/5 flex items-center gap-1 text-[10px] font-mono text-emerald-400 font-semibold justify-center relative z-10 drop-shadow-sm">
+          <Star className="w-3.5 h-3.5 fill-emerald-500 text-emerald-400" />
           DAY COMPLETE • RETENTION MAX
         </div>
       )}

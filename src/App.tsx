@@ -455,19 +455,19 @@ export default function App() {
   };
 
   return (
-    <div id="applet-viewport" className="min-h-screen bg-neutral-90/50 text-neutral-800 font-sans pb-16">
+    <div id="applet-viewport" className="min-h-screen font-sans pb-16">
       {/* Toast popup portal list */}
       <CelebrationToastList toasts={toasts} removeToast={removeToast} />
 
       {/* Hero Header Space */}
-      <header className="border-b border-neutral-200/60 bg-white/70 backdrop-blur-md sticky top-0 z-40 transition-shadow animate-fade-in">
+      <header className="glass-panel sticky top-0 z-40 transition-shadow animate-fade-in border-b-0 border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="w-9 h-9 bg-neutral-900 border border-neutral-950 flex items-center justify-center text-white rounded-lg select-none">
               <Sparkles className="w-5 h-5 text-amber-400 fill-amber-400/40" />
             </span>
             <div>
-              <h1 className="text-lg font-display font-bold tracking-tight text-neutral-900 leading-tight animate-fade-in-up">
+              <h1 className="text-lg font-display font-bold tracking-tight text-white leading-tight animate-fade-in-up drop-shadow-sm">
                 AI Agents Vibe Track
               </h1>
               <p className="text-3xs font-mono text-neutral-400 uppercase tracking-widest font-semibold flex items-center gap-1">
@@ -478,11 +478,11 @@ export default function App() {
 
           <div className="flex items-center gap-3 select-none">
             {/* Active User Mini Tag/Chip */}
-            <div className="px-3 py-1 bg-neutral-50/80 rounded-full border border-neutral-200/80 flex items-center gap-2 animate-scale-up">
+            <div className="px-3 py-1 bg-black/40 rounded-full border border-white/10 flex items-center gap-2 animate-scale-up shadow-inner">
               <span className={`w-4.5 h-4.5 rounded-full font-bold font-sans text-4xs flex items-center justify-center text-white shadow-xs ${activeProfile.avatarColor}`}>
                 {activeProfile.name.charAt(0).toUpperCase()}
               </span>
-              <span className="text-3xs font-semibold text-neutral-700 truncate max-w-28 sm:max-w-40 font-mono">
+              <span className="text-3xs font-semibold text-neutral-300 truncate max-w-28 sm:max-w-40 font-mono">
                 {activeProfile.name}
               </span>
             </div>
@@ -490,7 +490,7 @@ export default function App() {
             <button
               id="confirm-reset-trigger-btn"
               onClick={() => setShowConfirmReset(true)}
-              className="px-3 py-1.5 rounded-lg border border-neutral-250 text-neutral-500 hover:text-neutral-800 hover:bg-neutral-50 hover:border-neutral-350 transition-all text-2xs font-mono font-medium flex items-center gap-1 cursor-pointer"
+              className="px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all text-2xs font-mono font-medium flex items-center gap-1 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               Reset Track
@@ -537,7 +537,7 @@ export default function App() {
           {/* Right Column (Day 1 to Day 5 Curriculum timeline) */}
           <div className="lg:col-span-8 space-y-6">
             <div className="flex items-center justify-between px-2">
-              <h3 className="font-display font-semibold text-sm text-neutral-400 uppercase tracking-widest">
+              <h3 className="font-display font-semibold text-sm text-indigo-400/80 uppercase tracking-widest drop-shadow-sm">
                 Curriculum Progression
               </h3>
               <p className="text-2xs font-sans text-neutral-400">
@@ -569,31 +569,31 @@ export default function App() {
       {showConfirmReset && (
         <div
           id="reset-alert-overlay"
-          className="fixed inset-0 bg-neutral-900/40 backdrop-blur-xs z-50 grid place-items-center p-4 animate-fade-in"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 grid place-items-center p-4 animate-fade-in"
         >
-          <div className="bg-white border border-neutral-200 shadow-xl rounded-2xl max-w-md w-full p-6 space-y-5 animate-scale-up">
+          <div className="glass-panel border border-white/10 shadow-2xl rounded-2xl max-w-md w-full p-6 space-y-5 animate-scale-up">
             <div className="space-y-2">
-              <h4 className="font-display font-bold text-lg text-neutral-900">
+              <h4 className="font-display font-bold text-lg text-white">
                 Are you absolutely sure?
               </h4>
-              <p className="text-sm text-neutral-500 font-sans leading-relaxed">
+              <p className="text-sm text-neutral-400 font-sans leading-relaxed">
                 This operation resets all registered course progress in your local cache,
                 including task checkboxes and current active track indicator. You cannot undo this.
               </p>
             </div>
 
-            <div className="flex items-center justify-end gap-3 font-mono text-2xs">
+            <div className="flex items-center justify-end gap-3 font-mono text-2xs mt-6">
               <button
                 id="cancel-reset-btn"
                 onClick={() => setShowConfirmReset(false)}
-                className="px-4 py-2 bg-white border border-neutral-250 text-neutral-600 hover:bg-neutral-50 hover:border-neutral-350 rounded-lg transition-all"
+                className="px-4 py-2 bg-white/5 border border-white/10 text-neutral-300 hover:bg-white/10 hover:text-white rounded-lg transition-all"
               >
                 No, cancel
               </button>
               <button
                 id="execute-reset-btn"
                 onClick={handleResetProgress}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all font-semibold shadow-sm"
+                className="px-4 py-2 bg-red-500/80 text-white rounded-lg hover:bg-red-500 transition-all font-semibold shadow-[0_0_15px_rgba(239,68,68,0.4)]"
               >
                 Yes, reset progress
               </button>
@@ -603,11 +603,11 @@ export default function App() {
       )}
 
       {/* Fine-Print Course footer */}
-      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-neutral-250 text-center space-y-2">
-        <p className="text-2xs font-mono tracking-wide text-neutral-400 uppercase">
+      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-white/5 text-center space-y-2">
+        <p className="text-2xs font-mono tracking-wide text-neutral-500 uppercase">
           Kaggle 5-Day AI Agents Course • Dev Companion Framework
         </p>
-        <p className="text-3xs text-neutral-305">
+        <p className="text-3xs text-neutral-600">
           Designed with love for developers. All progress is preserved offline inside your browser’s localStorage.
         </p>
       </footer>

@@ -71,22 +71,22 @@ export default function UserProfileCard({
   return (
     <div
       id="user-profile-management-card"
-      className="bg-white border border-neutral-200 shadow-xs rounded-2xl p-5 space-y-5 transition-all hover:shadow-md"
+      className="glass-card rounded-2xl p-5 space-y-5 transition-all hover:shadow-md border-white/10"
     >
-      <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
+      <div className="flex items-center justify-between border-b border-white/10 pb-3">
         <div className="flex items-center gap-2">
-          <Users className="w-4 h-4 text-neutral-500" />
-          <h2 className="font-display font-bold text-sm text-neutral-900 tracking-tight">
+          <Users className="w-4 h-4 text-neutral-400" />
+          <h2 className="font-display font-bold text-sm text-white tracking-tight">
             Browser Local Accounts
           </h2>
         </div>
-        <span className="text-3xs font-mono bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full font-bold uppercase tracking-wide">
+        <span className="text-3xs font-mono bg-black/40 border border-white/5 text-neutral-400 px-2 py-0.5 rounded-full font-bold uppercase tracking-wide">
           Local Storage
         </span>
       </div>
 
       {/* Active User Frame */}
-      <div className="bg-neutral-50/70 border border-neutral-150 rounded-xl p-4 space-y-3">
+      <div className="bg-black/20 border border-white/5 shadow-inner rounded-xl p-4 space-y-3">
         <p className="text-3xs font-mono text-neutral-400 uppercase tracking-widest font-bold">
           Active Account Session
         </p>
@@ -107,38 +107,38 @@ export default function UserProfileCard({
                     maxLength={24}
                     value={editNameValue}
                     onChange={(e) => setEditNameValue(e.target.value)}
-                    className="w-full bg-white border border-neutral-300 rounded-md px-2 py-1 text-xs font-sans text-neutral-800 focus:outline-hidden focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500"
+                    className="w-full bg-black/40 border border-white/20 rounded-md px-2 py-1 text-xs font-sans text-white focus:outline-hidden focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                     placeholder="Enter learner name"
                     autoFocus
                   />
                   <button
                     onClick={handleSaveRename}
-                    className="p-1.5 bg-neutral-900 text-white rounded-md hover:bg-neutral-800 transition-all cursor-pointer"
+                    className="p-1.5 bg-indigo-500 text-white rounded-md hover:bg-indigo-400 transition-all cursor-pointer"
                   >
                     <Check className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={() => setIsEditingName(false)}
-                    className="p-1.5 bg-neutral-200 text-neutral-700 rounded-md hover:bg-neutral-300 transition-all cursor-pointer"
+                    className="p-1.5 bg-white/10 text-neutral-300 rounded-md hover:bg-white/20 transition-all cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <p className="font-sans font-semibold text-xs text-neutral-800 truncate">
+                  <p className="font-sans font-semibold text-xs text-white truncate">
                     {activeProfile.name}
                   </p>
                   <button
                     onClick={handleStartRename}
-                    className="p-1 hover:bg-neutral-200 text-neutral-400 hover:text-neutral-700 rounded-md transition-all cursor-pointer"
+                    className="p-1 hover:bg-white/10 text-neutral-400 hover:text-white rounded-md transition-all cursor-pointer"
                     title="Rename Profile"
                   >
                     <Edit2 className="w-3 h-3" />
                   </button>
                 </div>
               )}
-              <p className="text-3xs font-mono text-neutral-400 truncate mt-0.5">
+              <p className="text-3xs font-mono text-neutral-500 truncate mt-0.5">
                 Saved & separated browser container
               </p>
             </div>
@@ -155,7 +155,7 @@ export default function UserProfileCard({
           {!isAdding && (
             <button
               onClick={() => setIsAdding(true)}
-              className="text-3xs font-mono font-bold text-neutral-600 hover:text-neutral-900 hover:underline flex items-center gap-1 cursor-pointer"
+              className="text-3xs font-mono font-bold text-indigo-400 hover:text-indigo-300 hover:underline flex items-center gap-1 cursor-pointer transition-colors"
             >
               <UserPlus className="w-3 h-3" />
               Add Account
@@ -166,10 +166,10 @@ export default function UserProfileCard({
         {isAdding ? (
           <form
             onSubmit={handleCreateSubmit}
-            className="border border-neutral-150 bg-neutral-50/50 p-3.5 rounded-xl space-y-3.5 animate-scale-up"
+            className="border border-white/10 bg-black/20 p-3.5 rounded-xl space-y-3.5 animate-scale-up shadow-inner"
           >
             <div className="space-y-1">
-              <label className="text-3xs font-mono text-neutral-500 uppercase tracking-wider block">
+              <label className="text-3xs font-mono text-neutral-400 uppercase tracking-wider block">
                 Learner / User Name:
               </label>
               <input
@@ -179,7 +179,7 @@ export default function UserProfileCard({
                 value={newProfileName}
                 onChange={(e) => setNewProfileName(e.target.value)}
                 placeholder="e.g. Kaggle Vibe Lord"
-                className="w-full bg-white border border-neutral-250 rounded-lg px-2.5 py-1.5 text-xs text-neutral-800 font-sans focus:outline-hidden focus:ring-1 focus:ring-neutral-400"
+                className="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white font-sans focus:outline-hidden focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
 
@@ -195,8 +195,8 @@ export default function UserProfileCard({
                     onClick={() => setSelectedColor(color)}
                     className={`w-6 h-6 rounded-full ${color} border flex items-center justify-center transition-all ${
                       selectedColor === color
-                        ? "border-neutral-900 ring-2 ring-neutral-200 scale-110"
-                        : "border-transparent opacity-85 hover:opacity-100"
+                        ? "border-white ring-2 ring-indigo-500 scale-110 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+                        : "border-transparent opacity-60 hover:opacity-100"
                     }`}
                   >
                     {selectedColor === color && <Check className="w-3 h-3 text-current" />}
@@ -209,13 +209,13 @@ export default function UserProfileCard({
               <button
                 type="button"
                 onClick={() => setIsAdding(false)}
-                className="px-3 py-1.5 bg-white border border-neutral-200 text-neutral-600 rounded-md hover:bg-neutral-50 cursor-pointer"
+                className="px-3 py-1.5 bg-white/5 border border-white/10 text-neutral-300 rounded-md hover:bg-white/10 hover:text-white cursor-pointer transition-all"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-3 py-1.5 bg-neutral-900 text-white rounded-md hover:bg-neutral-800 font-semibold cursor-pointer"
+                className="px-3 py-1.5 bg-indigo-500 text-white rounded-md hover:bg-indigo-400 font-semibold cursor-pointer transition-all shadow-[0_0_10px_rgba(99,102,241,0.4)]"
               >
                 Create
               </button>
@@ -230,8 +230,8 @@ export default function UserProfileCard({
                   key={p.id}
                   className={`group flex items-center justify-between p-2 rounded-xl transition-all border ${
                     isCurrent
-                      ? "bg-neutral-900 text-white border-neutral-950 shadow-xs"
-                      : "bg-white hover:bg-neutral-50 text-neutral-700 border-neutral-200/75"
+                      ? "bg-white/10 text-white border-white/20 shadow-xs"
+                      : "bg-black/20 hover:bg-white/5 text-neutral-300 border-white/5"
                   }`}
                 >
                   <button
@@ -244,10 +244,10 @@ export default function UserProfileCard({
                       {p.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="truncate">
-                      <p className={`text-2xs font-sans font-semibold truncate ${isCurrent ? "text-white" : "text-neutral-800"}`}>
+                      <p className={`text-2xs font-sans font-semibold truncate ${isCurrent ? "text-white" : "text-neutral-300 group-hover:text-white"}`}>
                         {p.name}
                       </p>
-                      <p className={`text-4xs font-mono truncate uppercase ${isCurrent ? "text-neutral-300" : "text-neutral-400"}`}>
+                      <p className={`text-4xs font-mono truncate uppercase ${isCurrent ? "text-indigo-300" : "text-neutral-500"}`}>
                         {isCurrent ? "Active Session" : "Click to Switch"}
                       </p>
                     </div>
@@ -256,7 +256,7 @@ export default function UserProfileCard({
                   {!isCurrent && profilesList.length > 1 && (
                     <button
                       onClick={() => onDeleteProfile(p.id)}
-                      className="opacity-0 group-hover:opacity-100 p-1.5 hover:bg-rose-50 hover:text-rose-600 text-neutral-400 rounded-lg transition-all cursor-pointer ml-2 shrink-0 self-center"
+                      className="opacity-0 group-hover:opacity-100 p-1.5 hover:bg-rose-500/20 hover:text-rose-400 text-neutral-500 rounded-lg transition-all cursor-pointer ml-2 shrink-0 self-center"
                       title="Delete profile"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
