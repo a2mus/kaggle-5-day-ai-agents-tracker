@@ -64,7 +64,7 @@ export default function DayCard({
 
       {/* Top Tag & Indicator */}
       {isActive && (
-        <span className="absolute -top-2.5 -right-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 border border-indigo-400 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-md shadow-md flex items-center gap-1 z-10">
+        <span className="absolute top-3 right-3 bg-gradient-to-r from-indigo-600 to-purple-600 border border-indigo-400/50 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-md shadow-md flex items-center gap-1 z-10">
           <Zap className="w-2.5 h-2.5 text-white fill-white" />
           ACTIVE STREAM
         </span>

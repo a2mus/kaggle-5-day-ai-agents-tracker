@@ -92,3 +92,5 @@ export interface ToastMessage {
   text: string;
   type: 'success' | 'info' | 'milestone';
 }
+
+export type DayStateUnion = Day1State | Day2State | Day3State | Day4State | Day5State;
