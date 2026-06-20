@@ -1,0 +1,41 @@
+installed:
+- agent-context
+- ponytail
+settings:
+  auto_execute_hooks: true
+hooks:
+  after_specify:
+  - extension: agent-context
+    command: speckit.agent-context.update
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Execute speckit.agent-context.update?
+    description: Refresh agent context after specification
+    condition: null
+  - extension: ponytail
+    command: speckit.ponytail.review
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Run YAGNI check on the generated spec?
+    description: Checks the specification for speculative features and over-scoping
+    condition: null
+  after_plan:
+  - extension: agent-context
+    command: speckit.agent-context.update
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Execute speckit.agent-context.update?
+    description: Refresh agent context after planning
+    condition: null
+  after_implement:
+  - extension: ponytail
+    command: speckit.ponytail.review
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Run over-engineering review on the implementation diff?
+    description: Reviews the implementation for unnecessary complexity
+    condition: null

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "extensions": {
+    "agent-context": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:9a1dc02d2d0139bb03860392ecacef79183be2c442feda2f9ccaa4e5907b1e47",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "agy": [
+          "speckit.agent-context.update"
+        ],
+        "codex": [
+          "speckit.agent-context.update"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-06-20T00:16:27.016823+00:00"
+    },
+    "ponytail": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:85afcb651f493445644c95eacdef75ba185446fb72b595575760e3f8b5c9a279",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "agy": [
+          "speckit.ponytail.review",
+          "speckit.ponytail.audit",
+          "speckit.ponytail.debt"
+        ],
+        "codex": [
+          "speckit.ponytail.review",
+          "speckit.ponytail.audit",
+          "speckit.ponytail.debt"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-06-20T00:23:25.320765+00:00"
+    }
+  }
+}
