@@ -71,7 +71,7 @@ export default function ProgressBar({
             5-Day AI Agents Course
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl">
-            Track your developer journey from setting up Google AI Studio to submitting
+            Track your developer journey from setting up your development environment to submitting
             your final capstone agent to Kaggle by July 6, 2026.
           </p>
         </div>

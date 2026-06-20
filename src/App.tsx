@@ -471,7 +471,7 @@ export default function App() {
                 AI Agents Vibe Track
               </h1>
               <p className="text-3xs font-mono text-neutral-400 uppercase tracking-widest font-semibold flex items-center gap-1">
-                Kaggle course companion • Google AI Studio
+                Kaggle course companion • 5-Day AI Agents Tracker
               </p>
             </div>
           </div>
